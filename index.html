@@ -172,7 +172,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>   jgklbsaddfhgn</p>
+        <h1 id="Java面向对象-chpt01"><a href="#Java面向对象-chpt01" class="headerlink" title="Java面向对象 chpt01"></a>Java面向对象 chpt01</h1><h2 id="FeiGe快递系统-环境搭建"><a href="#FeiGe快递系统-环境搭建" class="headerlink" title="FeiGe快递系统-环境搭建"></a>FeiGe快递系统-环境搭建</h2><h3 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h3><p>在学习Java面向对象之前，我们先来回顾以下Java基础的内容：</p>
+<ul>
+<li>基本数据类型 </li>
+<li>分支和循环语句</li>
+<li>数组</li>
+<li>类和对象的简介</li>
+<li>带参数的方法</li>
+<li>字符串</li>
+</ul>
+<p>我们先来看分支语句的练习，参考代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sep02am</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//声明变量：年龄、学生身份与否</span></span><br><span class="line">		<span class="keyword">int</span> age;<span class="comment">//年龄 </span></span><br><span class="line">		<span class="keyword">boolean</span> isStu;<span class="comment">//学生与否</span></span><br><span class="line">		<span class="comment">//先判断年龄（0-12；12-60；&gt;60）</span></span><br><span class="line">		Scanner input =  <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请问你是否有学生证(y/n)"</span>);</span><br><span class="line">		String tmp = input.next();</span><br><span class="line">		<span class="keyword">if</span>(tmp.equals(<span class="string">"y"</span>))&#123;isStu = <span class="keyword">true</span>;&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(tmp.equals(<span class="string">"n"</span>))&#123;isStu = <span class="keyword">false</span>;&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;System.out.println(<span class="string">"录入有误，程序退出"</span>); <span class="keyword">return</span>;&#125;</span><br><span class="line">		<span class="keyword">if</span>(isStu)&#123;<span class="comment">//是学生</span></span><br><span class="line">			System.out.println(<span class="string">"学生半票"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			System.out.println(<span class="string">"请出示你的身份证，以便查看年龄。"</span>);</span><br><span class="line">			age = input.nextInt();<span class="comment">//控制台给age赋值</span></span><br><span class="line">			<span class="keyword">if</span>(age&lt;=<span class="number">12</span>&amp;&amp;age&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				System.out.println(<span class="string">"半票"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(age&gt;<span class="number">12</span> &amp;&amp; age &lt;=<span class="number">60</span>)&#123;</span><br><span class="line">				System.out.println(<span class="string">"全票"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(age&gt;<span class="number">60</span>)&#123;</span><br><span class="line">				System.out.println(<span class="string">"免票"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="项目分析"><a href="#项目分析" class="headerlink" title="项目分析"></a>项目分析</h3><p>要使用Java进行面向对象的编程，首先要学会用面向对象的思想考虑问题和编写程序。所以，同学们看到手里的教材时候，不难发现，1~8章都是围绕一个项目开展的。下面，就对这个贯穿项目进行分下。<br>来看它的总体机构图(同学们手中的教材上也有)，可以花一点时间来看。</p>
+<p><img src="imgs/FeiGe_structure.png" alt></p>
+<p>M-&gt;Model(用户注册信息)<br>V-&gt;View视图(可见的页面显示部分)<br>C-&gt;Controller控制器(逻辑控制)</p>
+<p>为什么这个项目中以图形展示架构？<br>答：总体来看，除了图形之外，通常还有表格、文字叙述的表示类型。<br>我们可以设想以下，用文字描述一个项目中，同样的一段文字，不同的人阅读后，理解可能会不一样，他们的头脑中浮现不同的场景。即使同一个人，隔一段时间看文字叙述，也可能会有两种不同的理解。<br>因此，从避免理解上偏差上，图形 &gt; 表格 &gt; 文字叙述。<br>项目因此优先选用图形表示。同学们，需要慢慢适应看项目中的各类的图！<br>如果有兴趣的同学，课外可以到这个网址查阅软件项目中常见的图形：<br><a href="https://blog.csdn.net/dsj15831653282/article/details/48769139" target="_blank" rel="noopener">软件工程中的那些图</a></p>
+<p>三大功能模块逻辑如下图()。<br><img src="imgs/FeiGe_models.png" alt></p>
+<ul>
+<li><p>“登录系统”、“注册用户”、“退出系统”三个菜单选项。若选“登录系统”，依次录入登录信息后，判定登录；选“注册用户”，返回上一级菜单；选“退出系统”，直接退出。</p>
+</li>
+<li><p>订单管理模块，会先获取用户订单文件，查询其内当前用户有无地址。若有地址，则输入商品信息后生成订单；若无地址，则请用户录入地址后再输入商品信息，而后生成订单。</p>
+</li>
+<li><p>收货地址管理，核心功能是对地址的增删改查(CRUD)。</p>
+</li>
+</ul>
 
       
 
@@ -290,6 +314,678 @@
 
 
   
+    <article id="post-课堂笔记0926" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/26/课堂笔记0926/">课堂笔记0926</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/26/课堂笔记0926/" class="archive-article-date">
+  	<time datetime="2019-09-26T02:43:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="FeiGe项目第二模块：地址管理模块"><a href="#FeiGe项目第二模块：地址管理模块" class="headerlink" title="FeiGe项目第二模块：地址管理模块"></a>FeiGe项目第二模块：地址管理模块</h1><h2 id="一、提交内容："><a href="#一、提交内容：" class="headerlink" title="一、提交内容："></a>一、提交内容：</h2><ol>
+<li>FeiGe项目的地址管理模块Eclipse项目；</li>
+<li>模块说明文档；</li>
+<li>项目介绍mp3录音文件。</li>
+</ol>
+<h2 id="二、提交时间：截至9月27日-周五-上午08-00"><a href="#二、提交时间：截至9月27日-周五-上午08-00" class="headerlink" title="二、提交时间：截至9月27日(周五)上午08:00"></a>二、提交时间：截至9月27日(周五)上午08:00</h2><h2 id="三、提交物评分细则："><a href="#三、提交物评分细则：" class="headerlink" title="三、提交物评分细则："></a>三、提交物评分细则：</h2><h3 id="1-模块功能-共计65分"><a href="#1-模块功能-共计65分" class="headerlink" title="1. 模块功能(共计65分)"></a>1. 模块功能(共计65分)</h3><p>(1)项目架构搭建：项目分为bean、service、tools三个包，项计5分；</p>
+<p>(2)实现功能：地址的增删改查的四个方法，每个方法的实现计15分，四个方法共计60分；</p>
+<h3 id="2-代码书写-共计20分"><a href="#2-代码书写-共计20分" class="headerlink" title="2 代码书写(共计20分)"></a>2 代码书写(共计20分)</h3><p>(1)命名规范：</p>
+<p>(a)类名首字母大写(2分)；<br>(b)方法名、属性名首字母大写，且遵循驼峰原则(3分)；<br>(c)变量名称有意义(不能是a、b、c等类无意义名称)，统一用英文，或者统一用拼音，且两者不混用。(5分)</p>
+<p>(2)代码注释规范：</p>
+<p>(a)类有文档注释(2分)；<br>(b)方法有多行注释以及逻辑代码有必要的单行注释(5分)；<br>(c)属性有单行注释(3分)。</p>
+<h3 id="3-模块说明-共计15分"><a href="#3-模块说明-共计15分" class="headerlink" title="3. 模块说明(共计15分)"></a>3. 模块说明(共计15分)</h3><p>(1) 按照以下格式提交模块说明(5分)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">一、项目名称：FeiGe快递系统</span><br><span class="line">二、功能模块：</span><br><span class="line">1、名称：用户地址管理模块</span><br><span class="line">2、逻辑功能：</span><br><span class="line">3、实现思路：</span><br><span class="line">三、所用到的相关技术</span><br><span class="line">1、XXX</span><br><span class="line">2、XXX</span><br><span class="line">3、XXX</span><br></pre></td></tr></table></figure>
+
+<p>(2)提交模块功能介绍的mp3格式录音文件，要求3分钟以上(10分)。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/26/课堂笔记0926/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-课堂笔记0925" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/25/课堂笔记0925/">课堂笔记0925</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/25/课堂笔记0925/" class="archive-article-date">
+  	<time datetime="2019-09-25T09:42:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java面向对象"><a href="#Java面向对象" class="headerlink" title="Java面向对象"></a>Java面向对象</h1><h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>l List与Set集合的区别？</p>
+<p>我们知道List中是可以存放重复元素的。Set接口，它里面的集合，所存储的元素就是不重复的。</p>
+<p>List:</p>
+<p>  它是一个有序的集合(元素存与取的顺序相同)</p>
+<p>  它可以存储重复的元素。</p>
+<p>  Set:</p>
+<p>  它是一个无序的集合(元素存与取的顺序可能不同)</p>
+<p>  它不能存储重复的元素。</p>
+<p> List集合中的特有方法</p>
+<p> void add(int index, Object element) 将指定的元素，添加到该集合中的指定位置上</p>
+<p> Object get(int index)返回集合中指定位置的元素。</p>
+<p> Object remove(int index) 移除列表中指定位置的元素, 返回的是被移除的元素</p>
+<p> Object set(int index, Object element)用指定元素替换集合中指定位置的元素,返回值的更新前的元素</p>
+<p>l HashSet:</p>
+<p>元素唯一，不能重复</p>
+<p>底层结构是 哈希表结构</p>
+<p>元素的存与取的顺序不能保证一致</p>
+<p>如何保证元素的唯一的？</p>
+<p>重写hashCode() 与 equals()方法</p>
+<p>l LinkedHashSet:</p>
+<p>元素唯一不能重复</p>
+<p>底层结构是 哈希表结构 + 链表结构</p>
+<p>元素的存与取的顺序一致</p>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">saveInMap(receiveAddress,fileName)方法：</span><br><span class="line">Map&lt;key,value&gt; map = <span class="keyword">new</span> Map&lt;key,value&gt;();</span><br><span class="line">key = fileName;</span><br><span class="line">value = receiveAddress;</span><br><span class="line">map.put(key,value);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Map的遍历"><a href="#Map的遍历" class="headerlink" title="Map的遍历"></a>Map的遍历</h3><ol>
+<li>Entry<br>由于Map中存放的元素均为键值对，故每一个键值对必然存在一个映射关系。<br>Map中采用Entry内部类来表示一个映射项，映射项包含Key和Value (我们总说键值对键值对, 每一个键值对也就是一个Entry)<br>Map.Entry里面包含getKey()和getValue()方法</li>
+</ol>
+<ol start="2">
+<li>entrySet<br>entrySet是 java中 键-值 对的集合，Set里面的类型是Map.Entry，一般可以通过map.entrySet()得到。<br> entrySet实现了Set接口，里面存放的是键值对。一个K对应一个V。</li>
+</ol>
+<p>用来遍历map的一种方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    Set&lt;Map.Entry&lt;String, String&gt;&gt; entryseSet=map.entrySet();</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">for</span> (Map.Entry&lt;String, String&gt; entry:entryseSet) &#123;</span><br><span class="line">     </span><br><span class="line">        System.out.println(entry.getKey()+<span class="string">","</span>+entry.getValue());</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//即通过getKey（）得到K，getValue得到V。</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="集合小结"><a href="#集合小结" class="headerlink" title="集合小结"></a>集合小结</h1><pre><code>List接口：ArrayList、LinkedList
+Set接口：HashSet、LinkedHashSet
+Map接口：HashMap</code></pre><h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><p>流的概念</p>
+<p>读/写的概念</p>
+<p>字节、字符、对象作为数据流</p>
+<p>再目前的FeiGe项目中，<br>receiveAddresss.txt作为文件<br>write()方法写入数据(水流)<br>Map对象作为数据对象</p>
+<p>IO:input/output</p>
+<p>开关：write()<br>I/O流：数据(字节数据byte、字符数据char、对象数据obj)<br>桶：目标文件(.txt;docx;mp4;jpg;.gif;amr;)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/25/课堂笔记0925/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-课堂笔记0924" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/24/课堂笔记0924/">课堂笔记0924</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/24/课堂笔记0924/" class="archive-article-date">
+  	<time datetime="2019-09-24T08:41:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java面向对象"><a href="#Java面向对象" class="headerlink" title="Java面向对象"></a>Java面向对象</h1><h2 id="多态的回顾总结"><a href="#多态的回顾总结" class="headerlink" title="多态的回顾总结"></a>多态的回顾总结</h2><p>多态(动态绑定)实现条件：</p>
+<ul>
+<li>(1)继承</li>
+<li>(2)方法重写</li>
+<li>(3)子类对象赋值给父类引用类型变量。</li>
+</ul>
+<p>向上转型：</p>
+<pre><code>【语法格式】
+    &lt;父类型&gt;  &lt;引用变量名&gt; = new &lt;子类型&gt;();</code></pre><p>代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person person = <span class="keyword">new</span> Customer();</span><br></pre></td></tr></table></figure>
+
+<p>向下转型：</p>
+<pre><code>【语法格式】
+    &lt;子类型&gt;  &lt;引用变量名&gt; = (&lt;子类型&gt;) &lt;父类型的引用变量&gt;;</code></pre><p>代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person person = <span class="keyword">new</span> Person();</span><br><span class="line">Customer costomer = person;</span><br></pre></td></tr></table></figure>
+
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="ArrayList和LinkedList"><a href="#ArrayList和LinkedList" class="headerlink" title="ArrayList和LinkedList"></a>ArrayList和LinkedList</h3><ol>
+<li><p>Arraylist：底层是基于动态数组。</p>
+</li>
+<li><p>Linkedlist:基于链表的动态数组。</p>
+</li>
+<li><p>总结：(1)对于随机访问get和set，ArrayList优于LinkedList，因为LinkedList要移动指针；(2)对于新增和删除操作add和remove，LinkedList比较占优势，因为ArrayList要移动数据。</p>
+<p>ArrayList:底层数据结构是数组，查询快，增删慢。</p>
+<p>LinkedList:底层数据结构是链表，查询慢，增删快。</p>
+</li>
+</ol>
+<h2 id="泛型："><a href="#泛型：" class="headerlink" title="泛型："></a>泛型：</h2><ol>
+<li><p>概念：<br>以ArrayList<e>和ArrayList<customer>为例<br>整个ArrayList<e>称为泛型类型<br>ArrayList<e>中的E称为类型变量或者类型形参<br>整个ArrayList<customer>称为参数化的类型<br>ArrayList<customer>中的Customer称为类型参数的实例或者类型实参<br>ArrayList<customer>中的<customer>念为typeof Customer<br>ArrayList称为原始类型</customer></customer></customer></customer></e></e></customer></e></p>
+</li>
+<li><p>为什么使用泛型？</p>
+</li>
+</ol>
+<p>泛型使类型（类和接口）在定义类、接口和方法时成为参数，好处在于：</p>
+<ul>
+<li>(1) 强化类型安全：由于泛型在编译期进行类型检查，从而保证类型安全，减少运行期的类型转换异常(“java.lang.ClassCastException”)。</li>
+<li>(2) 增强代码和文档的易读性。</li>
+</ul>
+<ol start="3">
+<li>泛型的使用<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">Person loggedPerson = <span class="keyword">null</span>;<span class="comment">//已登陆用户变量</span></span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">static</span> List&lt;Person&gt; allRegistered = <span class="keyword">new</span> ArrayList&lt;Person&gt;();<span class="comment">//存放所有已注册用户的集合</span></span><br><span class="line"><span class="keyword">static</span>&#123;</span><br><span class="line">    Person person1 = <span class="keyword">new</span> Customer(<span class="string">"1001"</span>, <span class="string">"罗书伟"</span>, <span class="string">'男'</span>, <span class="number">18</span>, <span class="string">"郑上路81号"</span>, <span class="string">"123456"</span>, <span class="number">1</span>, <span class="string">"13533335555"</span>, <span class="keyword">null</span>);</span><br><span class="line">	Person person2 = <span class="keyword">new</span> Customer(<span class="string">"1002"</span>, <span class="string">"许海涛"</span>, <span class="string">'男'</span>, <span class="number">18</span>, <span class="string">"郑上路81号"</span>, <span class="string">"123456"</span>, <span class="number">1</span>, <span class="string">"13533335555"</span>,<span class="keyword">null</span>);</span><br><span class="line">	Person person3 = <span class="keyword">new</span> Customer(<span class="string">"1003"</span>, <span class="string">"王瑞丰"</span>, <span class="string">'男'</span>, <span class="number">18</span>, <span class="string">"郑上路81号"</span>, <span class="string">"123456"</span>, <span class="number">1</span>, <span class="string">"13533335555"</span>,<span class="keyword">null</span>);</span><br><span class="line">	Person person4 = <span class="keyword">new</span> Courier(<span class="string">"1004"</span>, <span class="string">"晋文帅"</span>, <span class="string">'男'</span>, <span class="number">18</span>, <span class="string">"郑上路81号"</span>, <span class="string">"123456"</span>, <span class="number">2</span>, <span class="string">"13533335555"</span>,<span class="string">"001"</span>, <span class="string">"豫A006"</span>);</span><br><span class="line">	Person person5 = <span class="keyword">new</span> Courier(<span class="string">"1005"</span>, <span class="string">"闫俊风"</span>, <span class="string">'女'</span>, <span class="number">18</span>, <span class="string">"郑上路81号"</span>, <span class="string">"123456"</span>, <span class="number">2</span>, <span class="string">"13533335555"</span>,<span class="string">"002"</span>, <span class="string">"豫A007"</span>);</span><br><span class="line">	Person person6 = <span class="keyword">new</span> Courier(<span class="string">"1006"</span>, <span class="string">"刘莹欣"</span>, <span class="string">'女'</span>, <span class="number">18</span>, <span class="string">"郑上路81号"</span>, <span class="string">"123456"</span>, <span class="number">2</span>, <span class="string">"13533335555"</span>, <span class="string">"003"</span>, <span class="string">"豫A008"</span>);</span><br><span class="line">	allRegistered.add(person1);</span><br><span class="line">	allRegistered.add(person2);</span><br><span class="line">	allRegistered.add(person3);</span><br><span class="line">	allRegistered.add(person4);</span><br><span class="line">	allRegistered.add(person5);</span><br><span class="line">	allRegistered.add(person6);</span><br><span class="line">&#125;</span><br><span class="line">    <span class="comment">/* </span></span><br><span class="line"><span class="comment">     * 三次登录机会 </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (count &gt;=<span class="number">3</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"已登录3次失败，强制退出系统"</span>);</span><br><span class="line">			System.exit(<span class="number">0</span>);<span class="comment">//退出系统</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			System.out.println(<span class="string">"正在进入登录操作......"</span></span><br><span class="line">					+ <span class="string">"\n请输入您的账号："</span>);</span><br><span class="line">			String id = input.next();</span><br><span class="line">			System.out.println(<span class="string">"请输入您的密码"</span>);</span><br><span class="line">			String pwd = input.next();		</span><br><span class="line">		<span class="comment">//2 调用登录判定方法</span></span><br><span class="line">			<span class="keyword">if</span>(!validate(id,pwd))&#123;<span class="comment">//登录失败</span></span><br><span class="line">				count++;</span><br><span class="line">				System.out.println(<span class="string">"您已经尝试登录第"</span>+count+<span class="string">"次，还有"</span>+(<span class="number">3</span>-count)+<span class="string">"次机会。"</span>);</span><br><span class="line">				login();</span><br><span class="line">			&#125;<span class="keyword">else</span> &#123;<span class="comment">//登录成功</span></span><br><span class="line">				System.out.println(<span class="string">"登录成功"</span>);</span><br><span class="line">				subMenu(loggedPerson);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">    <span class="comment">/* </span></span><br><span class="line"><span class="comment">     * 用户名、密码验证(遍历已注册用户)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">validate</span><span class="params">(String id, String pwd)</span></span>&#123;</span><br><span class="line">		<span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">		<span class="comment">//判定登录，查询集合中的用户，进行比对</span></span><br><span class="line">		<span class="keyword">for</span> (Person p : allRegistered) &#123;</span><br><span class="line">			<span class="keyword">if</span> (p.getP_ID().equals(id) &amp;&amp; p.getPassword().equals(pwd)) &#123;</span><br><span class="line">				flag = <span class="keyword">true</span>;</span><br><span class="line">				loggedPerson = p;<span class="comment">//比对正确的Person赋给已登陆用户</span></span><br><span class="line">				System.out.println(<span class="string">"欢迎"</span>+p.getName()+<span class="string">"登录feiGe系统！"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> flag;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>上面的代码，若不使用泛型，则下面的这句代码会编译报错：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person person1 = <span class="keyword">new</span> Customer(<span class="string">"1004"</span>, <span class="string">"晋文帅"</span>, <span class="string">'男'</span>, <span class="number">18</span>, <span class="string">"郑上路81号"</span>, <span class="string">"123456"</span>, <span class="number">1</span>, <span class="string">"13533335555"</span>, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="地址管理模块"><a href="#地址管理模块" class="headerlink" title="地址管理模块"></a>地址管理模块</h2><p>项目主架构参考代码：</p>
+<ul>
+<li>已登陆用户(常量)，放在常量类(Constants)中。</li>
+<li>主菜单类放AddressService类中。</li>
+</ul>
+<p>Constants类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> tools;</span><br><span class="line"><span class="keyword">import</span> bean.Customer;</span><br><span class="line"><span class="keyword">import</span> bean.Person;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Constants</span> </span>&#123;</span><br><span class="line">	<span class="comment">//登录用户对象</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Person loginObj = <span class="keyword">new</span> Customer(<span class="string">"1001"</span>, <span class="string">"Sam"</span>, <span class="string">'m'</span>, <span class="number">12</span>, <span class="string">"郑上路81号"</span>, <span class="string">"123456"</span>, <span class="number">1</span>, <span class="string">"13533335555"</span>,<span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>AddressService类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> service;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> tools.Constants;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AddressService</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> Scanner input = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"欢迎"</span>+Constants.loginObj.getName()+<span class="string">"先生/女士登录！"</span>);</span><br><span class="line">		<span class="comment">//调用主菜单方法</span></span><br><span class="line">		<span class="keyword">new</span> AddressService().operatingType();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 地址管理模块主菜单</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operatingType</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"1.添加收货地址"</span>);</span><br><span class="line">		System.out.println(<span class="string">"2.删除收货地址"</span>);</span><br><span class="line">		System.out.println(<span class="string">"3.修改收货地址"</span>);</span><br><span class="line">		System.out.println(<span class="string">"4.查询收货地址"</span>);</span><br><span class="line">		System.out.println(<span class="string">"5.退出"</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">switch</span> (input.next()) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"1"</span>:</span><br><span class="line">			addAddress();<span class="comment">//添加地址方法</span></span><br><span class="line">			operatingType();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"2"</span>:</span><br><span class="line"><span class="comment">//			removeAddress();//删除地址方法</span></span><br><span class="line">			operatingType();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"3"</span>:</span><br><span class="line"><span class="comment">//			updateAddress();//修改地址方法</span></span><br><span class="line">			operatingType();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"4"</span>:</span><br><span class="line">			listAddress();<span class="comment">//查询所有地址方法</span></span><br><span class="line">			operatingType();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"5"</span>:</span><br><span class="line">			System.exit(<span class="number">0</span>);<span class="comment">//退出</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 添加地址</span></span><br><span class="line"><span class="comment">	 * 第一步：添加一个ReceiveAddress对象</span></span><br><span class="line"><span class="comment">	 * 第二步：调用工具类FileData中的writeData()方法，写入地址到文件中</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addAddress</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 查询地址</span></span><br><span class="line"><span class="comment">	 * 获得当前登录者的所有地址: 读取登录者相关的地址文件，并将地址返回</span></span><br><span class="line"><span class="comment">	 */</span>		</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">listAddress</span><span class="params">()</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/24/课堂笔记0924/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-课堂笔记0923" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/课堂笔记0923/">课堂笔记0923</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/23/课堂笔记0923/" class="archive-article-date">
+  	<time datetime="2019-09-23T09:40:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java面向对象"><a href="#Java面向对象" class="headerlink" title="Java面向对象"></a>Java面向对象</h1><h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><ol>
+<li>为什么用到集合？</li>
+</ol>
+<p>因为数组不能满足我们的需要，例如下图：<br><img src="imgs/%E9%9B%86%E5%90%88-why.png" alt></p>
+<p>框架与普通数组相比<br>  对比 |数组|集合<br>—–|—–|——-<br>长度|长度是固定|长度是可变的<br>存储对象|可存储基本数据类型，也可存储对象的引用类型变量|只可存储对象引用类型变量<br>对象类型|必须是相同类型数据|可以是不同类型的引用类型变量</p>
+<ol start="2">
+<li>集合是什么？<br>按照javaAPI，集合框架包括如下图：<br><img src="imgs/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.png" alt></li>
+</ol>
+<p>不同接口之间的存储区别<br>(1).Collection接口存储一组不唯一(允许重复)、无序的对象。<br>(2).Set接口继承Collection接口，存储一组唯一(不允许重复)、无序的对象。<br>(3).List接口继承Collection接口，存储一组不唯一(允许重复)、有序(以元素插入的次序来放置元素，不会重新排列)的对象。<br>(4).Map接口存储一组成对的键-值对象，提供key(键)到value(值)的映射。Map中的key不要求有序，不允许重复。value同样不要求有序，但允许重复。</p>
+<ol start="3">
+<li>集合如何使用？</li>
+</ol>
+<p>看一下示例。</p>
+<p>首先封装一个实体类，代码如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 英雄类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Samuel</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hero</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> loyalty;<span class="comment">//忠诚度</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> health;</span><br><span class="line">	<span class="keyword">private</span> String occupation;<span class="comment">//职业</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLoyalty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> loyalty;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLoyalty</span><span class="params">(<span class="keyword">int</span> loyalty)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.loyalty = loyalty;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getHealth</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> health;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHealth</span><span class="params">(<span class="keyword">int</span> health)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.health = health;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getOccupation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> occupation;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOccupation</span><span class="params">(String occupation)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.occupation = occupation;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Hero</span><span class="params">(String name, <span class="keyword">int</span> loyalty, <span class="keyword">int</span> health, String occupation)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">		<span class="keyword">this</span>.loyalty = loyalty;</span><br><span class="line">		<span class="keyword">this</span>.health = health;</span><br><span class="line">		<span class="keyword">this</span>.occupation = occupation;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Hero</span><span class="params">(String name, String occupation)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">		<span class="keyword">this</span>.occupation = occupation;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>之后，在测试类中写</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试ArryList的add()、size()、get()方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Samuel</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sample1Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//创建4个英雄对象</span></span><br><span class="line">		Hero heroGuo = <span class="keyword">new</span> Hero(<span class="string">"郭靖"</span>, <span class="string">"战士"</span>);</span><br><span class="line">		Hero heroHuang = <span class="keyword">new</span> Hero(<span class="string">"黄蓉"</span>, <span class="string">"法师"</span>);</span><br><span class="line">		Hero heroAna = <span class="keyword">new</span> Hero(<span class="string">"阿纳金"</span>, <span class="string">"剑士"</span>);</span><br><span class="line">		Hero heroMu = <span class="keyword">new</span> Hero(<span class="string">"穆桂英"</span>, <span class="string">"元帅"</span>);</span><br><span class="line">		<span class="comment">//创建ArrayList集合对象并把4个英雄对象放入其中</span></span><br><span class="line">		<span class="comment">//List heros = new ArrayList();</span></span><br><span class="line">		List&lt;Hero&gt; heros = <span class="keyword">new</span> ArrayList&lt;Hero&gt;();</span><br><span class="line">		heros.add(heroGuo);</span><br><span class="line">		heros.add(heroHuang);</span><br><span class="line">		heros.add(heroAna);</span><br><span class="line">		heros.add(heroMu);<span class="comment">//添加到指定位置</span></span><br><span class="line">		heros.remove(<span class="number">0</span>);</span><br><span class="line">		heros.remove(heroHuang);</span><br><span class="line"></span><br><span class="line"><span class="comment">//		Integer intValue = new Integer(12);</span></span><br><span class="line"><span class="comment">//		heros.add(intValue);</span></span><br><span class="line"><span class="comment">//		heros.add(12);</span></span><br><span class="line">		</span><br><span class="line"><span class="comment">//		heros.add("我是英雄");</span></span><br><span class="line">		</span><br><span class="line"><span class="comment">//输出集合中英雄的数量</span></span><br><span class="line">		System.out.println(<span class="string">"总共有"</span>+heros.size()+<span class="string">"个英雄"</span>);</span><br><span class="line">		<span class="comment">//通过遍历集合显示各条英雄信息</span></span><br><span class="line">		<span class="comment">/*for (int i = 0; i &lt; heros.size(); i++) &#123;</span></span><br><span class="line"><span class="comment">			Hero hero = (Hero) heros.get(i);//</span></span><br><span class="line"><span class="comment">			System.out.println(hero.getName()+"\t"+hero.getOccupation());</span></span><br><span class="line"><span class="comment">		&#125;*/</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">/*for (Object object : heros) &#123;</span></span><br><span class="line"><span class="comment">			</span></span><br><span class="line"><span class="comment">		&#125;*/</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (Hero hero : heros) &#123;</span><br><span class="line">			System.out.println(hero.getName()+<span class="string">"\t"</span>+hero.getOccupation());</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		System.out.println(heros.toString());</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/23/课堂笔记0923/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-课堂笔记0919" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/19/课堂笔记0919/">课堂笔记0919</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/19/课堂笔记0919/" class="archive-article-date">
+  	<time datetime="2019-09-19T03:45:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="FeiGe项目第一模块：登录模块"><a href="#FeiGe项目第一模块：登录模块" class="headerlink" title="FeiGe项目第一模块：登录模块"></a>FeiGe项目第一模块：登录模块</h1><h2 id="登录模块提交要求："><a href="#登录模块提交要求：" class="headerlink" title="登录模块提交要求："></a>登录模块提交要求：</h2><p>内容：根据课堂演示，完成FeiGe项目的登录功能模块。<br>提交形式：项目提交给小组长，小组长根据以下细则评分后，并将小组人员得分提交给学习委员(注：组长只提交分数)。<br>评分细则如下：<br>1 项目可运行，此项计10分。<br>2 项目功能<br>(1)项目分包：bean包实体类Person的封装、service包(登录功能服务)、tools包(暂时轮空)，此项计20分；<br>(2)实现功能：正确的账号、密码可正常登录，此项计20分；<br>(3)登录次数限制：错误的账号、密码至多登录三次，此项计20分。<br>(4)已注册用户：也即集合内Person对象数至少有3个，此项5计分。<br>2 项目书写<br>(1)代码注释(类的注释、方法的注释、属性的注释等)，此项计15分。<br>(2)代码规范(没有执行不到的死代码、冗余代码、没有空白行、格式整齐划一)，此项计10分。</p>
+<h2 id="登录模块学员得分"><a href="#登录模块学员得分" class="headerlink" title="登录模块学员得分"></a>登录模块学员得分</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>学号<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>小组<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>登录模块<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370501<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>陈哲<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>88<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370502<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>程大浩<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>70<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370503<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>邓雷<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>85<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370504<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>高慧强<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>80<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370505<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>管中建<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>95<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370506<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>郭建华<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>85<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370507<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>韩瑞祥<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>6<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>0<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370508<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>贺长豪<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>5<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>93<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370509<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>晋文帅<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>95<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370510<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>李国战<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>95<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370511<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>李晓阳<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>75<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370512<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>李永寒<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>90<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370513<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>刘运浩<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>90<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370514<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>陆宇航<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>95<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370515<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>罗书伟<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>90<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370516<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>马博韬<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>5<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>88<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370517<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>马一博<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>86<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370518<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>孟龙<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>80<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370519<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>石晓杰<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>70<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370520<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>孙致富<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>85<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370521<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>王瑞丰<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>90<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370522<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>王书文<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>90<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370523<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>王豫豪<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>6<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>90<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370524<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>相智博<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>6<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>95<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370525<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>辛玥阳<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>6<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>0<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370526<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>徐英晋<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>85<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370527<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>许广耀<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>82<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370528<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>许海涛<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>90<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370529<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>许重庆<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>90<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370530<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>杨思雨<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>82<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370531<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>杨振兴<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>100<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370532<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>张坷<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>6<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>85<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370533<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>郑天浩<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>5<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>90<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370534<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>董丽芳<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>88<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370535<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>李晨晨<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>6<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>95<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370536<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>李燕芳<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>90<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370537<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>梁亚瑞<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>5<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>91<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370538<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>刘莹欣<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>6<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>90<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370539<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>潘露<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>87<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370540<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>吴淼格<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>95<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370541<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>闫俊风<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>5<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>92<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370542<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>杨函<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>5<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>93<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>201806370543<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>张天华<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>5<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>92<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/19/课堂笔记0919/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-课堂笔记0918" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/18/课堂笔记0918/">课堂笔记0918</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/18/课堂笔记0918/" class="archive-article-date">
+  	<time datetime="2019-09-18T10:36:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java面向对象"><a href="#Java面向对象" class="headerlink" title="Java面向对象"></a>Java面向对象</h1><h3 id="关键字super"><a href="#关键字super" class="headerlink" title="关键字super"></a>关键字super</h3><ul>
+<li>构造方法中的super();</li>
+<li>重写方法时，出现的super.shout();</li>
+</ul>
+<h3 id="关键字instanceof"><a href="#关键字instanceof" class="headerlink" title="关键字instanceof"></a>关键字instanceof</h3><p>语法规则：<br>【对象】 instanceof 【类名】</p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>多态的实现条件：</p>
+<p>  1.继承</p>
+<p>  2.子类重写父类方法</p>
+<p>  3.子类对象赋值给父类引用。</p>
+<p>向上转型</p>
+<p>向下转型</p>
+<p>课堂代码演示：</p>
+<p>云医疗项目：后台Java，34个接口，即34个servlet对应的service；数据库核心表6个，共18个表；前台26个页面(学生写其中10个)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> poly.sam.pvt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Son</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Son</span><span class="params">(String name)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated constructor stub</span></span><br><span class="line">		<span class="keyword">super</span>(<span class="string">"s"</span>);</span><br><span class="line"><span class="comment">//		super.func();</span></span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">method</span><span class="params">(<span class="keyword">int</span> a)</span><span class="comment">//子类独有的方法</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> a+<span class="string">""</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Son的方法"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Father father = <span class="keyword">new</span> Son();</span><br><span class="line">		father.func();</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		String str = ((Son)father).method(3);</span></span><br><span class="line"><span class="comment">//		System.out.println(str);</span></span><br><span class="line">		<span class="comment">//new Father(str);</span></span><br><span class="line"><span class="comment">//		Father f = new Father();</span></span><br><span class="line"><span class="comment">//		f.func();//编译时类型：Father/运行时类型：Father</span></span><br><span class="line"><span class="comment">//		System.out.println(f.name);//编译时类型：Father/运行时类型：Father</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//s.method(new Son());</span></span><br><span class="line"><span class="comment">//		System.out.println(s.method());</span></span><br><span class="line"><span class="comment">//		System.out.println(s.method(5));</span></span><br><span class="line"><span class="comment">//		System.out.println(s.method(2, 8));</span></span><br><span class="line">		</span><br><span class="line"><span class="comment">//		s.func();//编译时类型：Son/运行时类型：Son</span></span><br><span class="line"><span class="comment">//		System.out.println(s.name);//编译时类型：Son/运行时类型：Son</span></span><br><span class="line"><span class="comment">//		</span></span><br><span class="line"><span class="comment">//		Father fs = new Son();</span></span><br><span class="line"><span class="comment">//		fs.func();//编译时类型：Father/运行时类型：Son</span></span><br><span class="line"><span class="comment">//		System.out.println(fs.name);//编译时类型：Father/运行时类型：Father</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>接口：interface</p>
+<p>第一种情况：物理硬件上的接口。</p>
+<p>第二种情况：整个项目架构上，后台像前台提供的功能，每个功能(方法)称之为一个接口。</p>
+<p>第三种情况：代码编程上。(最常用的地方：触发事件的监听器接口；)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/18/课堂笔记0918/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-课堂笔记0917" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/17/课堂笔记0917/">课堂笔记0917</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/17/课堂笔记0917/" class="archive-article-date">
+  	<time datetime="2019-09-17T10:35:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java面向对象"><a href="#Java面向对象" class="headerlink" title="Java面向对象"></a>Java面向对象</h1><h3 id="关键字super"><a href="#关键字super" class="headerlink" title="关键字super"></a>关键字super</h3><ul>
+<li>构造方法中的super();</li>
+<li>重写方法时，出现的super.shout();</li>
+</ul>
+<h3 id="关键字instanceof"><a href="#关键字instanceof" class="headerlink" title="关键字instanceof"></a>关键字instanceof</h3><p>语法规则：<br>【对象】 instanceof 【类名】</p>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>多态的实现条件：</p>
+<p>  1.继承</p>
+<p>  2.子类重写父类方法</p>
+<p>  3.子类对象赋值给父类引用。</p>
+<p>向上转型</p>
+<p>向下转型</p>
+<p>课堂代码演示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> poly.sam.pvt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Son</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Son</span><span class="params">(String name)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated constructor stub</span></span><br><span class="line">		<span class="keyword">super</span>(<span class="string">"s"</span>);</span><br><span class="line"><span class="comment">//		super.func();</span></span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">method</span><span class="params">(<span class="keyword">int</span> a)</span><span class="comment">//子类独有的方法</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> a+<span class="string">""</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Son的方法"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Father father = <span class="keyword">new</span> Son();</span><br><span class="line">		father.func();</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		String str = ((Son)father).method(3);</span></span><br><span class="line"><span class="comment">//		System.out.println(str);</span></span><br><span class="line">		<span class="comment">//new Father(str);</span></span><br><span class="line"><span class="comment">//		Father f = new Father();</span></span><br><span class="line"><span class="comment">//		f.func();//编译时类型：Father/运行时类型：Father</span></span><br><span class="line"><span class="comment">//		System.out.println(f.name);//编译时类型：Father/运行时类型：Father</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//s.method(new Son());</span></span><br><span class="line"><span class="comment">//		System.out.println(s.method());</span></span><br><span class="line"><span class="comment">//		System.out.println(s.method(5));</span></span><br><span class="line"><span class="comment">//		System.out.println(s.method(2, 8));</span></span><br><span class="line">		</span><br><span class="line"><span class="comment">//		s.func();//编译时类型：Son/运行时类型：Son</span></span><br><span class="line"><span class="comment">//		System.out.println(s.name);//编译时类型：Son/运行时类型：Son</span></span><br><span class="line"><span class="comment">//		</span></span><br><span class="line"><span class="comment">//		Father fs = new Son();</span></span><br><span class="line"><span class="comment">//		fs.func();//编译时类型：Father/运行时类型：Son</span></span><br><span class="line"><span class="comment">//		System.out.println(fs.name);//编译时类型：Father/运行时类型：Father</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/17/课堂笔记0917/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-课堂笔记0916" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/16/课堂笔记0916/">课堂笔记0916</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/16/课堂笔记0916/" class="archive-article-date">
+  	<time datetime="2019-09-16T10:35:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java面向对象"><a href="#Java面向对象" class="headerlink" title="Java面向对象"></a>Java面向对象</h1><h3 id="FeiGe项目课堂演示"><a href="#FeiGe项目课堂演示" class="headerlink" title="FeiGe项目课堂演示"></a>FeiGe项目课堂演示</h3><p>此部分代码，运用了代码抽取的方式，即将实现某个功能的一段代码抽取出来，作为一个方法封装起来，可以多处调用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginService</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> Scanner input =<span class="keyword">new</span> Scanner(System.in);<span class="comment">//Scanner静态变量</span></span><br><span class="line">	<span class="keyword">static</span> LoginService loginService = <span class="keyword">new</span> LoginService();<span class="comment">//当前类的静态对象</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"正在进入登录操作......"</span></span><br><span class="line">				+ <span class="string">"\n请输入您的账号："</span>);</span><br><span class="line">		String id = input.next();</span><br><span class="line">		System.out.println(<span class="string">"请输入您的密码"</span>);</span><br><span class="line">		String pwd = input.next();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		loginService.welcome();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"暂不支持此选项。"</span>);</span><br><span class="line">		welcome();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exit</span><span class="params">()</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">welcome</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"==========================="</span></span><br><span class="line">				+ <span class="string">"\n欢迎来到飞鸽快递系统"</span></span><br><span class="line">				+ <span class="string">"\n==========================="</span></span><br><span class="line">				+ <span class="string">"\n尊敬的用户，请选择操作类型"</span></span><br><span class="line">				+ <span class="string">"\n1.登录系统"</span></span><br><span class="line">				+ <span class="string">"\n2.注册用户"</span></span><br><span class="line">				+ <span class="string">"\n3.退出系统"</span>);</span><br><span class="line">		String choice = input.next();</span><br><span class="line">		<span class="keyword">switch</span> (choice) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"1"</span>:</span><br><span class="line">			loginService.login();<span class="comment">//代码抽取，放在方法里</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"2"</span>:</span><br><span class="line">			loginService.register();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"3"</span>:</span><br><span class="line">			loginService.exit();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>多态的实现条件：</p>
+<p>  1.继承</p>
+<p>  2.子类重写父类方法</p>
+<p>  3.子类对象赋值给父类引用。</p>
+<p>课堂代码演示：</p>
+<p>父类Animal</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> age;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shout</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"动物叫"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>子类Cat，重写shout()方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">	<span class="comment">//方法的重写(覆盖)</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shout</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"喵喵叫！"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Animal animal = <span class="keyword">new</span> Cat();</span><br><span class="line">		animal.shout();<span class="comment">//喵喵叫</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/16/课堂笔记0916/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 

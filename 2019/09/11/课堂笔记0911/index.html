@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>课堂笔记0911 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="Java面向对象巩固加强：  构造方法  构造方法的重载  super和this关键字  static静态   ###构造方法 当有如下代码： 12Student stu = new Student();  赋值号“=”右侧的new Student(); 关键字“new”：代表系统会为分配内存空间；而Student()代表在这个分配的内存空间里，调用Student这个类的构造方法创建一个对象。 赋">
+<meta property="og:type" content="article">
+<meta property="og:title" content="课堂笔记0911">
+<meta property="og:url" content="http://yoursite.com/2019/09/11/课堂笔记0911/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Java面向对象巩固加强：  构造方法  构造方法的重载  super和this关键字  static静态   ###构造方法 当有如下代码： 12Student stu = new Student();  赋值号“=”右侧的new Student(); 关键字“new”：代表系统会为分配内存空间；而Student()代表在这个分配的内存空间里，调用Student这个类的构造方法创建一个对象。 赋">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-27T00:34:28.268Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="课堂笔记0911">
+<meta name="twitter:description" content="Java面向对象巩固加强：  构造方法  构造方法的重载  super和this关键字  static静态   ###构造方法 当有如下代码： 12Student stu = new Student();  赋值号“=”右侧的new Student(); 关键字“new”：代表系统会为分配内存空间；而Student()代表在这个分配的内存空间里，调用Student这个类的构造方法创建一个对象。 赋">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,295 +154,222 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-课堂笔记0911" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      课堂笔记0911
+    </h1>
+  
+
+        
+        <a href="/2019/09/11/课堂笔记0911/" class="archive-article-date">
+  	<time datetime="2019-09-11T10:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java面向对象"><a href="#Java面向对象" class="headerlink" title="Java面向对象"></a>Java面向对象</h1><p>巩固加强：</p>
+<ul>
+<li><p>构造方法</p>
+</li>
+<li><p>构造方法的重载</p>
+</li>
+<li><p>super和this关键字</p>
+</li>
+<li><p>static静态</p>
+</li>
+</ul>
+<p>###构造方法</p>
+<p>当有如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Student stu = <span class="keyword">new</span> Student();</span><br></pre></td></tr></table></figure>
+
+<p>赋值号“=”右侧的new Student();</p>
+<p>关键字“new”：代表系统会为分配内存空间；而Student()代表在这个分配的内存空间里，调用Student这个类的构造方法创建一个对象。</p>
+<p>赋值号“=”左侧的“Student stu”：代表为创建的对象地址，放在一个名为stu的变量里，这个变量称之为Student类型的引用变量。</p>
+<p>注意：有些时候，我们自定义一个类，并没有写这个类的构造方法。而创建这个自定义类的对象时候，是一定有构造方法被调用的，只不过调用的是java中的超类Object的构造方法，这个方法程序员不用自己写，系统会在创建对象的时候自动调用这个Object的构造方法。</p>
+<p>###构造方法的重载</p>
+<p>请看下面的代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> bean;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 人类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Administrator</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> String P_ID; <span class="comment">//id账号</span></span><br><span class="line">	<span class="keyword">public</span> String name;<span class="comment">//姓名</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">char</span> sex;<span class="comment">//性别</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> age;<span class="comment">//年龄</span></span><br><span class="line">	<span class="keyword">public</span> String address;<span class="comment">//地址</span></span><br><span class="line">	<span class="keyword">public</span> String password; <span class="comment">//密码</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> type; <span class="comment">//类型</span></span><br><span class="line">	<span class="keyword">public</span> String telNum;<span class="comment">//电话号码</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();<span class="comment">//super是指向父类的引用，如果构造方法没有显示地调用父类的构造方法，那么编译器会自动为它加上一个默认的super()方法调用。</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String pID, String name, <span class="keyword">char</span> sex, <span class="keyword">int</span> age, String address,</span></span></span><br><span class="line"><span class="function"><span class="params">			String password, <span class="keyword">int</span> type, String telNum)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();<span class="comment">//super()语句必须是构造方法的第一个子句。</span></span><br><span class="line">		P_ID = pID;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">		<span class="keyword">this</span>.sex = sex;</span><br><span class="line">		<span class="keyword">this</span>.age = age;</span><br><span class="line">		<span class="keyword">this</span>.address = address;</span><br><span class="line">		<span class="keyword">this</span>.password = password;</span><br><span class="line">		<span class="keyword">this</span>.type = type;</span><br><span class="line">		<span class="keyword">this</span>.telNum = telNum;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="keyword">this</span>.P_ID;<span class="comment">//获取当前对象的P_ID属性，并打印输出。</span></span><br><span class="line">		System.out.println(<span class="keyword">this</span>.Type);<span class="comment">//获取当前对象的type属性，并打印输出。</span></span><br><span class="line">		System.out.println(<span class="keyword">this</span>.Name);<span class="comment">//获取当前对象的name属性，并打印输出。</span></span><br><span class="line">		System.out.println(<span class="keyword">this</span>.Age);<span class="comment">//获取当前对象的age属性，并打印输出。</span></span><br><span class="line">		System.out.println(<span class="keyword">this</span>.Address;<span class="comment">//获取当前对象的address属性，并打印输出。</span></span><br><span class="line">		System.out.println(<span class="keyword">this</span>.Password);<span class="comment">//获取当前对象的password属性，并打印输出。</span></span><br><span class="line">		System.out.println(<span class="keyword">this</span>.Sex;<span class="comment">//获取当前对象的sex属性，并打印输出。</span></span><br><span class="line">		System.out.println(<span class="keyword">this</span>.TelNum);<span class="comment">//获取当前对象的telNum属性，并打印输出。</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码中，我们还看到了2个构造方法，其参数不同。下面的入口方法中，用无参数的构造方法创建对象，并打印其name属性的值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	Person p = <span class="keyword">new</span> Person();<span class="comment">//创建Person的对象，Person引用变量为p。</span></span><br><span class="line">	</span><br><span class="line">       p.showInfo();<span class="comment">//调用Person类的对象的showInfo方法</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码，运行结果显示为这些属性的缺损值(默认值)，原因是这些属性，在打印输出前，没有赋值。再看下面的代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	Person p = <span class="keyword">new</span> Person();<span class="comment">//创建Person的对象，Person引用变量为p。</span></span><br><span class="line"></span><br><span class="line">	p.setP_ID(<span class="string">"101"</span>);</span><br><span class="line">	p.setType(<span class="number">1</span>);</span><br><span class="line">	p.setName(<span class="string">"Sam"</span>);</span><br><span class="line">	p.setAge(<span class="number">19</span>);</span><br><span class="line">	p.setAddress(<span class="string">"郑上路81号"</span>);</span><br><span class="line">	p.setPassword(<span class="string">"123456"</span>);</span><br><span class="line">	p.setSex(<span class="string">'男'</span>);</span><br><span class="line">	p.setTelNum(<span class="string">"13500001111"</span>);</span><br><span class="line"></span><br><span class="line">       p.showInfo();<span class="comment">//调用Person类的对象的showInfo方法</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码，运行结果显示为这些属性的值，均是在打印输出前通过set方法赋的值。再看下面的代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	Person p = <span class="keyword">new</span> Person(<span class="string">"101"</span>, <span class="string">"Sam"</span>, <span class="string">'男'</span>, <span class="number">19</span>, <span class="string">"郑上路81号"</span>, <span class="string">"123456"</span>, <span class="number">1</span>, <span class="string">"13500001111"</span>);<span class="comment">//创建Person对象的同时属性赋值。</span></span><br><span class="line"></span><br><span class="line">       p.showInfo();<span class="comment">//调用Person类的对象的showInfo方法        </span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面运代码，运行结果显示为这些属性的值，均是在打印输出前，通过构造方法赋的值。</p>
+<p>###super和this关键字</p>
+<p>super关键字第一种使用情况(构造方法中)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line"><span class="keyword">public</span> String name;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">A</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">super</span>();<span class="comment">//实际上是超类(Object)的构造方法。注意：super()可以不写，但系统会自动隐含这句话，所以通常会在super()之后添加其它的代码。</span></span><br><span class="line">	System.out.println(<span class="string">"A的对象被创建"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>super关键字第二种使用情况(子类重写父类构造方法):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父类B</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"B中的方法func()被调用！"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//子类C</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.func();<span class="comment">//用“super”，就调用父类B中的func()方法。</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>this关键字使用第一种使用情况(在方法内部的使用)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">D</span> </span>&#123;</span><br><span class="line"><span class="keyword">public</span> String name;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.name = name;<span class="comment">//this就代表当前所在类D的一个对象；this.name代表所创建D的对象的name的值。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：在类的外部用到对象，与内部用到对象的区别如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A a1 = <span class="keyword">new</span> A();<span class="keyword">this</span>就是那个a1，只是<span class="keyword">this</span>在内部用，而a1在外部用</span><br><span class="line"></span><br><span class="line">A a2 = <span class="keyword">new</span> A()同理，这时在a2的内部，<span class="keyword">this</span>就代表a2</span><br></pre></td></tr></table></figure>
+
+<p>this关键字使用第二种情况(在方法之间调用，多用于构造方法之间调用)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">E</span> </span>&#123;</span><br><span class="line"><span class="keyword">public</span> String id;	</span><br><span class="line"><span class="keyword">public</span> String name;</span><br><span class="line"><span class="keyword">public</span> String gender;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">E</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.func(<span class="string">"abc"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">pubilc <span class="keyword">void</span> <span class="title">func</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"func()方法的参数str："</span>+str);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>###静态方法的调用</p>
+<p>1) 文字描述：通过类名来调用该类的静态方法。</p>
+<p>2) 代码示例：</p>
+<p>一个类中有一个静态方法如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="function">pubilc <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">funcA</span><span class="params">()</span></span>&#123;</span><br><span class="line">System.out.println(<span class="string">"这里是静态方法funcA()的输出"</span>);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在另外一个类中，调用此静态方法，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="function">pubilc <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">func02</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">A.funcA();</span><br><span class="line">System.out.println(<span class="string">"这里是方法funcB()的输出"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	B b = <span class="keyword">new</span> B();</span><br><span class="line">	b.funcB();<span class="comment">//打印："这里是静态方法funcA()的输出"和"这里是方法funcB()的输出"。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当然，当所调用的静态方法，是在同一个类中，可不写类名，直接写方法名。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/26/第一章/" class="archive-article-date">
-  	<time datetime="2019-09-26T11:40:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/26/第一章/">第一章</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/11/课堂笔记0911/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/26/hello-world/" class="archive-article-date">
-  	<time datetime="2019-09-26T10:21:44.434Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/09/12/课堂笔记0912/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          课堂笔记0912
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/10/课堂笔记0910/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">课堂笔记0910</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/26/hello-world/">Hello World</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/26/课堂笔记0926/" class="archive-article-date">
-  	<time datetime="2019-09-26T02:43:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/26/课堂笔记0926/">课堂笔记0926</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/25/课堂笔记0925/" class="archive-article-date">
-  	<time datetime="2019-09-25T09:42:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/25/课堂笔记0925/">课堂笔记0925</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/24/课堂笔记0924/" class="archive-article-date">
-  	<time datetime="2019-09-24T08:41:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/24/课堂笔记0924/">课堂笔记0924</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/23/课堂笔记0923/" class="archive-article-date">
-  	<time datetime="2019-09-23T09:40:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/23/课堂笔记0923/">课堂笔记0923</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/19/课堂笔记0919/" class="archive-article-date">
-  	<time datetime="2019-09-19T03:45:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/19/课堂笔记0919/">课堂笔记0919</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/18/课堂笔记0918/" class="archive-article-date">
-  	<time datetime="2019-09-18T10:36:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/18/课堂笔记0918/">课堂笔记0918</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/17/课堂笔记0917/" class="archive-article-date">
-  	<time datetime="2019-09-17T10:35:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/17/课堂笔记0917/">课堂笔记0917</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/16/课堂笔记0916/" class="archive-article-date">
-  	<time datetime="2019-09-16T10:35:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/16/课堂笔记0916/">课堂笔记0916</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +393,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
