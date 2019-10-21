@@ -152,6 +152,314 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-1022" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><h2 id="实现登录功能"><a href="#实现登录功能" class="headerlink" title="实现登录功能"></a>实现登录功能</h2><h3 id="第一步-创建login-jsp登录页面"><a href="#第一步-创建login-jsp登录页面" class="headerlink" title="第一步: 创建login.jsp登录页面"></a>第一步: 创建login.jsp登录页面</h3><p>在所创建的动态项目his_v1中，于WebContent文件夹下创建login.jsp。其显示效果类似于下图:<br><img src="%5Cimgs%5Clogin%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C.png" alt></p>
+<p>对应源代码如下：</p>
+<p>&lt;html&gt;<br>&lt;body&gt;<br>    &lt;!– 需要注意的是:xml配置文件中的url-pattern这里写的是/LoginServlet，而在jsp中form表单的action写的是LoginServlet,而不是/LoginServlet。 –&gt;<br>   &lt;form action=”LoginServlet” method=”post”&gt;<br>        &lt;table&gt;<br>            &lt;tr&gt;<br>                &lt;td colspan=”2”&gt;登录窗口&lt;/td&gt;<br>            &lt;/tr&gt;<br>            &lt;tr&gt;<br>                &lt;td&gt;用户名：&lt;/td&gt;<br>                &lt;td&gt;&lt;input type=”text” name=”username” /&gt;<br>                &lt;/td&gt;<br>            &lt;/tr&gt;<br>            &lt;tr&gt;<br>                &lt;td&gt;密码：&lt;/td&gt;<br>                &lt;td&gt;&lt;input type=”password” name=”password” /&gt;<br>                &lt;/td&gt;<br>            &lt;/tr&gt;<br>            &lt;tr&gt;<br>                &lt;td colspan=”2”&gt;&lt;input type=”submit” value=”登录” /&gt; &lt;a href=”register.jsp”&gt;注册&lt;/a&gt;<br>                &lt;/td&gt;<br>            &lt;/tr&gt;<br>        &lt;/table&gt;<br>    &lt;/form&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</p>
+<h3 id="第二步：创建处理登录判定的Servlet-LoginServlet"><a href="#第二步：创建处理登录判定的Servlet-LoginServlet" class="headerlink" title="第二步：创建处理登录判定的Servlet:LoginServlet"></a>第二步：创建处理登录判定的Servlet:LoginServlet</h3><p> 在第一步中的login.jsp中，我们需要特别注意这句代码：</p>
+<p> &lt;form action=”LoginServlet” method=”post”&gt;</p>
+<p>这行代码中有两个属性，说明如下：</p>
+<ul>
+<li><p>action属性：点击登录按钮后，接下来的动作，这里是转到了LoginServlet。</p>
+</li>
+<li><p>method属性：表单中数据的提交方式。</p>
+</li>
+</ul>
+<p>接下来，再src文件夹下创建LoginServlet类，其中的doPost()方法参考代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		request.setCharacterEncoding(<span class="string">"utf-8"</span>);<span class="comment">//设置request编码</span></span><br><span class="line">		response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);<span class="comment">//设置response编码</span></span><br><span class="line">		String id = request.getParameter(<span class="string">"username"</span>);<span class="comment">//获取表单用户名</span></span><br><span class="line">		String pwd = request.getParameter(<span class="string">"password"</span>);<span class="comment">//获取表单密码</span></span><br><span class="line">		<span class="keyword">if</span>(pwd==<span class="keyword">null</span> || pwd.equals(<span class="string">""</span>))&#123;<span class="comment">//若没有密码，或为空</span></span><br><span class="line">			response.getWriter().print(<span class="string">"密码不能为空！"</span>);<span class="comment">//在当前页面(login.jsp)添加显示一句话。</span></span><br><span class="line">			<span class="keyword">return</span>;<span class="comment">//跳出doPost()方法，等待login.jsp页面再次提交表单。</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(id==<span class="keyword">null</span> || id.equals(<span class="string">""</span>))&#123;<span class="comment">//若没有账号，或为空</span></span><br><span class="line">			response.getWriter().print(<span class="string">"用户名不能为空！"</span>);<span class="comment">//在当前页面(login.jsp)添加显示一句话。</span></span><br><span class="line">			<span class="keyword">return</span>;<span class="comment">//跳出doPost()方法，等待login.jsp页面再次提交表单。</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(id.equals(<span class="string">"sam"</span>) &amp;&amp; pwd.equals(<span class="string">"123"</span>)) &#123;<span class="comment">//用户名、密码正确</span></span><br><span class="line">			request.getRequestDispatcher(<span class="string">"welcome.jsp"</span>).forward(request, response);<span class="comment">//页面转发</span></span><br><span class="line">			<span class="comment">//页面跳转的方式：(1)转发：foward(地址栏地址不变);(2)重定向：redirect(地址栏地址变化)</span></span><br><span class="line">		&#125;<span class="keyword">else</span><span class="comment">//用户名、密码错误</span></span><br><span class="line">		&#123;</span><br><span class="line">			response.getWriter().print(<span class="string">"用户名或密码有误，请重新输入！"</span>);<span class="comment">//在当前页面(login.jsp)添加显示一句话。</span></span><br><span class="line">			<span class="keyword">return</span>;<span class="comment">//跳出doPost()方法，等待login.jsp页面再次提交表单。</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第三步：LoginServlet在项目配置文件web-xml中注册："><a href="#第三步：LoginServlet在项目配置文件web-xml中注册：" class="headerlink" title="第三步：LoginServlet在项目配置文件web.xml中注册："></a>第三步：LoginServlet在项目配置文件web.xml中注册：</h3><pre><code>  &lt;servlet&gt;&lt;/servlet&gt;
+  &lt;servlet-name&gt;&lt;/servlet-name&gt;
+  &lt;servlet-class&gt;&lt;/servlet-class&gt;
+  &lt;servlet-mapping&gt;&lt;/servlet-mapping&gt;
+  &lt;url-pattern&gt;&lt;/url-pattern&gt;
+这五个都是注册一个servlet组件必须的节点</code></pre><p>1，<servlet>是用来注册Servlet的存放地址<br>           <servlet-name> 这个是我们要注册servlet的名字<br>           <servlet-class> 这个就是指向我们要注册的servlet 的类地址, 要带包路径<br>            以上两个在一个servlet 节点之下.</servlet-class></servlet-name></servlet></p>
+<p>2，<servlet-mapping> 是用来配置我们注册的组件的访问路径,<br>           <servlet-name> 这个要与前面写的servlet的名字一致</servlet-name></servlet-mapping></p>
+<pre><code>&lt;url-pattern&gt; 配置这个组件的访问路径
+
+ 以上两个在一个servlet-mapping 节点之下.</code></pre><p>接续第一步、第二步内容为例：<br><servlet><br><servlet-name>LoginServlet</servlet-name><br><servlet-class>sam.his.servlet.LoginServlet</servlet-class>  <!--存放路径 --><br></servlet><br><servlet-mapping><br><servlet-name>LoginServlet</servlet-name>                       <!-- 与上面的 <servlet-name> 要一致 --><br><url-pattern>/LoginServlet</url-pattern>  <!-- 访问路径 --><br></servlet-mapping></p>
+<h3 id="第四步：实施登录"><a href="#第四步：实施登录" class="headerlink" title="第四步：实施登录"></a>第四步：实施登录</h3><p>注意：需要再添加一个登录成功页面welcome.jsp(参考第二步的doPost方法中代码)</p>
+<p>项目部署在tomcat服务器上，运行后在地址栏输入地址访问项目的login.jsp页面，表单中录入用户名、密码，尝试登录。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/21/1022/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-课堂笔记1021" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><h2 id="梳理回顾"><a href="#梳理回顾" class="headerlink" title="梳理回顾"></a>梳理回顾</h2><p>前端开发：HTML、CSS、JS(JavaScript)</p>
+<p>企业中前端工程师：使用前端框架(BootStrap/easyUI/VUE/Angular)开发。</p>
+<p>后端开发：JavaSE、JSP、JavaWeb(良好的稳定性、健壮性优于其它语言。企业级应用首选之一)</p>
+<p>企业中的后端工程师：使用后端框架(SpringMVC/Struts2、Spring、myBatis)开发。</p>
+<p><img src="%5Cimgs%5C%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%9101.jpg" alt><br>“全栈工程师”</p>
+<p>C语言:工业控制、嵌入式设备(电磁炉、吸尘器、微波炉。。。)。</p>
+<h2 id="jsp"><a href="#jsp" class="headerlink" title="jsp"></a>jsp</h2><p>JSP项目是在后台开发框架成熟前使用较多的一种JavaWeb技术，后期会逐渐过度到后台框架。<br>jvm只能处理java编译的class文件。</p>
+<h3 id="JSP和后台框架"><a href="#JSP和后台框架" class="headerlink" title="JSP和后台框架"></a>JSP和后台框架</h3><p>核心技术均为Servlet<br>Servlet在jdk中的包为：javax.servlet.http.HttpServlet。</p>
+<h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><ol>
+<li>jsp和servlet的区别和联系：<br>1). jsp经编译后就变成了Servlet.<br>(JSP的本质就是Servlet，JVM只能识别java的类(.class)，不能识别JSP的代码,Web容器将JSP的代码编译成JVM能够识别的java类)<br>2).jsp更擅长表现于页面显示,servlet更擅长于逻辑控制.<br>3).Servlet中没有内置对象，Jsp中的内置对象都是必须通过HttpServletRequest对象，HttpServletResponse对象以及HttpServlet对象得到.<br>Jsp是Servlet的一种简化，使用Jsp只需要完成程序员需要输出到客户端的内容，Jsp中的Java脚本如何镶嵌到一个类中，由Jsp容器完成。<br>而Servlet则是个完整的Java类，这个类的Service方法用于生成对客户端的响应。</li>
+</ol>
+<ol start="2">
+<li>联系：  </li>
+</ol>
+<ul>
+<li>JSP是Servlet技术的扩展，本质上就是Servlet的简易方式。JSP编译后是“类servlet”。</li>
+<li>Servlet和JSP最主要的不同点在于：</li>
+<li>Servlet的应用逻辑是在Java文件中，并且完全从表示层中的HTML里分离开来。（jsp里面是有html标签，servlet没有html标签）</li>
+<li>而JSP的情况是Java和HTML可以组合成一个扩展名为.jsp的文件。(JSP=java类+HTML)</li>
+<li>JSP侧重于视图，Servlet主要用于控制逻辑。(JSP不能脱离Servlet，但Servelet可独立存在)</li>
+<li>Servlet更多的是类似于一个Controller，用来做控制。</li>
+</ul>
+<h2 id="servlet类中的方法"><a href="#servlet类中的方法" class="headerlink" title="servlet类中的方法"></a>servlet类中的方法</h2><h3 id="servlet中的方法"><a href="#servlet中的方法" class="headerlink" title="servlet中的方法"></a>servlet中的方法</h3><p>doGet()方法：用get方式传输网络数据<br>get方式：明文传参(地址栏显示)、传输数据较小、</p>
+<p>doPost()方法：用post方式传输网络数据<br>post方式：暗文传参(地址栏不显示)、传输数据较大、</p>
+<h3 id="页面跳转方式"><a href="#页面跳转方式" class="headerlink" title="页面跳转方式"></a>页面跳转方式</h3><p>页面跳转的方式分类：</p>
+<ol>
+<li><p>转发：foward(地址栏URL不变)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.getRequestDispatcher(<span class="string">"hello.jsp"</span>).forward(request，response);<span class="comment">//页面转发</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重定向：redirect(地址栏URL变化)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.sendRedirect(<span class="string">"资源的URL"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>两种跳转方式异同：</p>
+</li>
+</ol>
+<ul>
+<li><p>转发使用的是getRequestDispatcher()方法;重定向使用的是sendRedirect();</p>
+</li>
+<li><p>转发：浏览器URL的地址栏不变。重定向：浏览器URL的地址栏改变；</p>
+</li>
+<li><p>转发是服务器行为，重定向是客户端行为；</p>
+</li>
+<li><p>转发是浏览器只做了一次访问请求。重定向是浏览器做了至少两次的访问请求；</p>
+</li>
+<li><p>转发2次跳转之间传输的信息不会丢失，重定向2次跳转之间传输的信息会丢失（request范围）。</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/21/课堂笔记1021/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-课堂笔记1009" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/09/课堂笔记1009/">课堂笔记0929</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/09/课堂笔记1009/" class="archive-article-date">
+  	<time datetime="2019-10-09T07:25:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JavaOOP(面向对象)课程的项目：</p>
+<p>FeiGe项目(3个模块，相互独立、文件的读写)</p>
+<p>学生管理系统(登录、信息的增删改查)-&gt;改写为访问数据库登录验证！</p>
+<hr>
+<p>MySQL安装：</p>
+<p>1 版本：5.6&lt;-&gt;5.7<br>2 安装：.exe(“下一步”)、.zip安装(命令提示符中配置)。</p>
+<p>Oracle、SQL Server、MongDB、Redis</p>
+<p>项目与数据库连接：<br>JAVA项目：JDBC(Java Database Bridge Connector)<br>.NET项目：ODBC</p>
+<p>作业：安装MySQL数据库stu，添加user表，至少有id和pwd两个字段；将学生管理系统添加数据库连接，通过查询数据库user表的id和pwd字段，实现判断登录。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/09/课堂笔记1009/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-课堂笔记0929" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/29/课堂笔记0929/">课堂笔记0929</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/29/课堂笔记0929/" class="archive-article-date">
+  	<time datetime="2019-09-29T03:45:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  进程：当一个软件程序，在内存中运行起来后，这个程序称之为一个进程。</p>
+<p>  线程：在一个进程之内，所执行的不同任务，每个任务称之为一个进程。</p>
+<pre><code>进程包含一个或者多个线程。线程不能独立存在，它是进程的一个子任务。</code></pre><p>FeiGe项目的3个模块：</p>
+<p>一、3个模块功能完成，并且回顾加强。</p>
+<p>二、java面向对象总体回顾。</p>
+<p>三、下一个项目的项目文档。(云医疗项目)</p>
+<p>四、github的blog</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/29/课堂笔记0929/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-课堂笔记0928am" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -925,316 +1233,9 @@ Map接口：HashMap</code></pre><h1 id="IO流"><a href="#IO流" class="headerlin
 
 
   
-    <article id="post-课堂笔记0918" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/18/课堂笔记0918/">课堂笔记0918</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/18/课堂笔记0918/" class="archive-article-date">
-  	<time datetime="2019-09-18T10:36:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Java面向对象"><a href="#Java面向对象" class="headerlink" title="Java面向对象"></a>Java面向对象</h1><h3 id="关键字super"><a href="#关键字super" class="headerlink" title="关键字super"></a>关键字super</h3><ul>
-<li>构造方法中的super();</li>
-<li>重写方法时，出现的super.shout();</li>
-</ul>
-<h3 id="关键字instanceof"><a href="#关键字instanceof" class="headerlink" title="关键字instanceof"></a>关键字instanceof</h3><p>语法规则：<br>【对象】 instanceof 【类名】</p>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>多态的实现条件：</p>
-<p>  1.继承</p>
-<p>  2.子类重写父类方法</p>
-<p>  3.子类对象赋值给父类引用。</p>
-<p>向上转型</p>
-<p>向下转型</p>
-<p>课堂代码演示：</p>
-<p>云医疗项目：后台Java，34个接口，即34个servlet对应的service；数据库核心表6个，共18个表；前台26个页面(学生写其中10个)。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> poly.sam.pvt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Son</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Son</span><span class="params">(String name)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated constructor stub</span></span><br><span class="line">		<span class="keyword">super</span>(<span class="string">"s"</span>);</span><br><span class="line"><span class="comment">//		super.func();</span></span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">method</span><span class="params">(<span class="keyword">int</span> a)</span><span class="comment">//子类独有的方法</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> a+<span class="string">""</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Son的方法"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Father father = <span class="keyword">new</span> Son();</span><br><span class="line">		father.func();</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		String str = ((Son)father).method(3);</span></span><br><span class="line"><span class="comment">//		System.out.println(str);</span></span><br><span class="line">		<span class="comment">//new Father(str);</span></span><br><span class="line"><span class="comment">//		Father f = new Father();</span></span><br><span class="line"><span class="comment">//		f.func();//编译时类型：Father/运行时类型：Father</span></span><br><span class="line"><span class="comment">//		System.out.println(f.name);//编译时类型：Father/运行时类型：Father</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//s.method(new Son());</span></span><br><span class="line"><span class="comment">//		System.out.println(s.method());</span></span><br><span class="line"><span class="comment">//		System.out.println(s.method(5));</span></span><br><span class="line"><span class="comment">//		System.out.println(s.method(2, 8));</span></span><br><span class="line">		</span><br><span class="line"><span class="comment">//		s.func();//编译时类型：Son/运行时类型：Son</span></span><br><span class="line"><span class="comment">//		System.out.println(s.name);//编译时类型：Son/运行时类型：Son</span></span><br><span class="line"><span class="comment">//		</span></span><br><span class="line"><span class="comment">//		Father fs = new Son();</span></span><br><span class="line"><span class="comment">//		fs.func();//编译时类型：Father/运行时类型：Son</span></span><br><span class="line"><span class="comment">//		System.out.println(fs.name);//编译时类型：Father/运行时类型：Father</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>接口：interface</p>
-<p>第一种情况：物理硬件上的接口。</p>
-<p>第二种情况：整个项目架构上，后台像前台提供的功能，每个功能(方法)称之为一个接口。</p>
-<p>第三种情况：代码编程上。(最常用的地方：触发事件的监听器接口；)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/18/课堂笔记0918/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-课堂笔记0917" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/17/课堂笔记0917/">课堂笔记0917</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/17/课堂笔记0917/" class="archive-article-date">
-  	<time datetime="2019-09-17T10:35:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Java面向对象"><a href="#Java面向对象" class="headerlink" title="Java面向对象"></a>Java面向对象</h1><h3 id="关键字super"><a href="#关键字super" class="headerlink" title="关键字super"></a>关键字super</h3><ul>
-<li>构造方法中的super();</li>
-<li>重写方法时，出现的super.shout();</li>
-</ul>
-<h3 id="关键字instanceof"><a href="#关键字instanceof" class="headerlink" title="关键字instanceof"></a>关键字instanceof</h3><p>语法规则：<br>【对象】 instanceof 【类名】</p>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>多态的实现条件：</p>
-<p>  1.继承</p>
-<p>  2.子类重写父类方法</p>
-<p>  3.子类对象赋值给父类引用。</p>
-<p>向上转型</p>
-<p>向下转型</p>
-<p>课堂代码演示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> poly.sam.pvt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Son</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Son</span><span class="params">(String name)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated constructor stub</span></span><br><span class="line">		<span class="keyword">super</span>(<span class="string">"s"</span>);</span><br><span class="line"><span class="comment">//		super.func();</span></span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">method</span><span class="params">(<span class="keyword">int</span> a)</span><span class="comment">//子类独有的方法</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> a+<span class="string">""</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Son的方法"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Father father = <span class="keyword">new</span> Son();</span><br><span class="line">		father.func();</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		String str = ((Son)father).method(3);</span></span><br><span class="line"><span class="comment">//		System.out.println(str);</span></span><br><span class="line">		<span class="comment">//new Father(str);</span></span><br><span class="line"><span class="comment">//		Father f = new Father();</span></span><br><span class="line"><span class="comment">//		f.func();//编译时类型：Father/运行时类型：Father</span></span><br><span class="line"><span class="comment">//		System.out.println(f.name);//编译时类型：Father/运行时类型：Father</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//s.method(new Son());</span></span><br><span class="line"><span class="comment">//		System.out.println(s.method());</span></span><br><span class="line"><span class="comment">//		System.out.println(s.method(5));</span></span><br><span class="line"><span class="comment">//		System.out.println(s.method(2, 8));</span></span><br><span class="line">		</span><br><span class="line"><span class="comment">//		s.func();//编译时类型：Son/运行时类型：Son</span></span><br><span class="line"><span class="comment">//		System.out.println(s.name);//编译时类型：Son/运行时类型：Son</span></span><br><span class="line"><span class="comment">//		</span></span><br><span class="line"><span class="comment">//		Father fs = new Son();</span></span><br><span class="line"><span class="comment">//		fs.func();//编译时类型：Father/运行时类型：Son</span></span><br><span class="line"><span class="comment">//		System.out.println(fs.name);//编译时类型：Father/运行时类型：Father</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/17/课堂笔记0917/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-课堂笔记0916" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/16/课堂笔记0916/">课堂笔记0916</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/16/课堂笔记0916/" class="archive-article-date">
-  	<time datetime="2019-09-16T10:35:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Java面向对象"><a href="#Java面向对象" class="headerlink" title="Java面向对象"></a>Java面向对象</h1><h3 id="FeiGe项目课堂演示"><a href="#FeiGe项目课堂演示" class="headerlink" title="FeiGe项目课堂演示"></a>FeiGe项目课堂演示</h3><p>此部分代码，运用了代码抽取的方式，即将实现某个功能的一段代码抽取出来，作为一个方法封装起来，可以多处调用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginService</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> Scanner input =<span class="keyword">new</span> Scanner(System.in);<span class="comment">//Scanner静态变量</span></span><br><span class="line">	<span class="keyword">static</span> LoginService loginService = <span class="keyword">new</span> LoginService();<span class="comment">//当前类的静态对象</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"正在进入登录操作......"</span></span><br><span class="line">				+ <span class="string">"\n请输入您的账号："</span>);</span><br><span class="line">		String id = input.next();</span><br><span class="line">		System.out.println(<span class="string">"请输入您的密码"</span>);</span><br><span class="line">		String pwd = input.next();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		loginService.welcome();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"暂不支持此选项。"</span>);</span><br><span class="line">		welcome();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exit</span><span class="params">()</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">welcome</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"==========================="</span></span><br><span class="line">				+ <span class="string">"\n欢迎来到飞鸽快递系统"</span></span><br><span class="line">				+ <span class="string">"\n==========================="</span></span><br><span class="line">				+ <span class="string">"\n尊敬的用户，请选择操作类型"</span></span><br><span class="line">				+ <span class="string">"\n1.登录系统"</span></span><br><span class="line">				+ <span class="string">"\n2.注册用户"</span></span><br><span class="line">				+ <span class="string">"\n3.退出系统"</span>);</span><br><span class="line">		String choice = input.next();</span><br><span class="line">		<span class="keyword">switch</span> (choice) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"1"</span>:</span><br><span class="line">			loginService.login();<span class="comment">//代码抽取，放在方法里</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"2"</span>:</span><br><span class="line">			loginService.register();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"3"</span>:</span><br><span class="line">			loginService.exit();</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>多态的实现条件：</p>
-<p>  1.继承</p>
-<p>  2.子类重写父类方法</p>
-<p>  3.子类对象赋值给父类引用。</p>
-<p>课堂代码演示：</p>
-<p>父类Animal</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> age;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shout</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"动物叫"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>子类Cat，重写shout()方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">	<span class="comment">//方法的重写(覆盖)</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shout</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"喵喵叫！"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Animal animal = <span class="keyword">new</span> Cat();</span><br><span class="line">		animal.shout();<span class="comment">//喵喵叫</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/16/课堂笔记0916/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-课堂笔记0916am" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/16/课堂笔记0916am/">课堂笔记0916am</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/16/课堂笔记0916am/" class="archive-article-date">
-  	<time datetime="2019-09-16T03:39:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Java面向对象"><a href="#Java面向对象" class="headerlink" title="Java面向对象"></a>Java面向对象</h1><h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>示例：</p>
-<p>父类Animal</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> age；</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shout</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"动物叫"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>第一个子类Cat</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">	<span class="meta">@Override</span> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shout</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"喵喵叫"</span>);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>第二个子类Dog</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// this指的是当前所在类的对象</span></span><br><span class="line">		<span class="keyword">super</span>.shout();<span class="comment">//所在(Dog)类的父类(Animal)的对象</span></span><br><span class="line">		System.out.println(<span class="string">"汪汪叫"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>测试类Test中实现多态</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	Animal animal1 = <span class="keyword">new</span> Cat();<span class="comment">//子类Cat的对象，赋值给父类Animal的引用变量animal</span></span><br><span class="line">	animal1.shout();<span class="comment">//喵喵叫</span></span><br><span class="line">	</span><br><span class="line">	Animal animal2 = <span class="keyword">new</span> Dog();</span><br><span class="line">	animal2.shout();<span class="comment">//汪汪叫</span></span><br><span class="line">	</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在测试类Test中添加一个方法，用来检测对象类型</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	Animal animal1 = <span class="keyword">new</span> Cat();<span class="comment">//子类Cat的对象，赋值给父类Animal的引用变量animal</span></span><br><span class="line">	animal1.shout();<span class="comment">//喵喵叫</span></span><br><span class="line">	</span><br><span class="line">	Animal animal2 = <span class="keyword">new</span> Dog();</span><br><span class="line">	animal2.shout();<span class="comment">//汪汪叫</span></span><br><span class="line"></span><br><span class="line">    animalShout(animal2);</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//判定所传入的对象类型是否为Cat(定义静态方法接收一个Animal类型的参数)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">animalShout</span><span class="params">(Animal animal)</span> </span>&#123;</span><br><span class="line">	 <span class="keyword">if</span> (animal <span class="keyword">instanceof</span> Cat) &#123;</span><br><span class="line">		 Cat aCat = (Cat) animal;</span><br><span class="line">		 aCat.shout();</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">"输入类型错误"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	 </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="异常的捕获"><a href="#异常的捕获" class="headerlink" title="异常的捕获"></a>异常的捕获</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	Animal animal1 = <span class="keyword">new</span> Cat();<span class="comment">//子类Cat的对象，赋值给父类Animal的引用变量animal</span></span><br><span class="line">	animal1.shout();<span class="comment">//喵喵叫</span></span><br><span class="line">	</span><br><span class="line">	Animal animal2 = <span class="keyword">new</span> Dog();</span><br><span class="line">	animal2.shout();<span class="comment">//汪汪叫</span></span><br><span class="line"></span><br><span class="line">    animalShout(animal2);</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">animalShout</span><span class="params">(Animal animal)</span> </span>&#123;</span><br><span class="line">	 <span class="keyword">try</span> &#123;</span><br><span class="line">		 Cat aCat = (Cat) animal;</span><br><span class="line">		 aCat.shout();<span class="comment">//喵喵叫</span></span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		System.err.println(<span class="string">"输入类型错误"</span>);</span><br><span class="line">	&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">"欢迎使用本程序"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/16/课堂笔记0916am/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 

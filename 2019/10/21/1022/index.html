@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="JSP实现登录功能第一步: 创建login.jsp登录页面在所创建的动态项目his_v1中，于WebContent文件夹下创建login.jsp。其显示效果类似于下图: 对应源代码如下： &amp;lt;html&amp;gt;&amp;lt;body&amp;gt;    &amp;lt;!– 需要注意的是:xml配置文件中的url-pattern这里写的是/LoginServlet，而在jsp中form表单的action写的是Log">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/10/21/1022/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="JSP实现登录功能第一步: 创建login.jsp登录页面在所创建的动态项目his_v1中，于WebContent文件夹下创建login.jsp。其显示效果类似于下图: 对应源代码如下： &amp;lt;html&amp;gt;&amp;lt;body&amp;gt;    &amp;lt;!– 需要注意的是:xml配置文件中的url-pattern这里写的是/LoginServlet，而在jsp中form表单的action写的是Log">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/10/21/1022/%5Cimgs%5Clogin%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C.png">
+<meta property="og:updated_time" content="2019-10-21T12:31:54.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="JSP实现登录功能第一步: 创建login.jsp登录页面在所创建的动态项目his_v1中，于WebContent文件夹下创建login.jsp。其显示效果类似于下图: 对应源代码如下： &amp;lt;html&amp;gt;&amp;lt;body&amp;gt;    &amp;lt;!– 需要注意的是:xml配置文件中的url-pattern这里写的是/LoginServlet，而在jsp中form表单的action写的是Log">
+<meta name="twitter:image" content="http://yoursite.com/2019/10/21/1022/%5Cimgs%5Clogin%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,295 +156,166 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-1022" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><h2 id="实现登录功能"><a href="#实现登录功能" class="headerlink" title="实现登录功能"></a>实现登录功能</h2><h3 id="第一步-创建login-jsp登录页面"><a href="#第一步-创建login-jsp登录页面" class="headerlink" title="第一步: 创建login.jsp登录页面"></a>第一步: 创建login.jsp登录页面</h3><p>在所创建的动态项目his_v1中，于WebContent文件夹下创建login.jsp。其显示效果类似于下图:<br><img src="%5Cimgs%5Clogin%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C.png" alt></p>
+<p>对应源代码如下：</p>
+<p>&lt;html&gt;<br>&lt;body&gt;<br>    &lt;!– 需要注意的是:xml配置文件中的url-pattern这里写的是/LoginServlet，而在jsp中form表单的action写的是LoginServlet,而不是/LoginServlet。 –&gt;<br>   &lt;form action=”LoginServlet” method=”post”&gt;<br>        &lt;table&gt;<br>            &lt;tr&gt;<br>                &lt;td colspan=”2”&gt;登录窗口&lt;/td&gt;<br>            &lt;/tr&gt;<br>            &lt;tr&gt;<br>                &lt;td&gt;用户名：&lt;/td&gt;<br>                &lt;td&gt;&lt;input type=”text” name=”username” /&gt;<br>                &lt;/td&gt;<br>            &lt;/tr&gt;<br>            &lt;tr&gt;<br>                &lt;td&gt;密码：&lt;/td&gt;<br>                &lt;td&gt;&lt;input type=”password” name=”password” /&gt;<br>                &lt;/td&gt;<br>            &lt;/tr&gt;<br>            &lt;tr&gt;<br>                &lt;td colspan=”2”&gt;&lt;input type=”submit” value=”登录” /&gt; &lt;a href=”register.jsp”&gt;注册&lt;/a&gt;<br>                &lt;/td&gt;<br>            &lt;/tr&gt;<br>        &lt;/table&gt;<br>    &lt;/form&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</p>
+<h3 id="第二步：创建处理登录判定的Servlet-LoginServlet"><a href="#第二步：创建处理登录判定的Servlet-LoginServlet" class="headerlink" title="第二步：创建处理登录判定的Servlet:LoginServlet"></a>第二步：创建处理登录判定的Servlet:LoginServlet</h3><p> 在第一步中的login.jsp中，我们需要特别注意这句代码：</p>
+<p> &lt;form action=”LoginServlet” method=”post”&gt;</p>
+<p>这行代码中有两个属性，说明如下：</p>
+<ul>
+<li><p>action属性：点击登录按钮后，接下来的动作，这里是转到了LoginServlet。</p>
+</li>
+<li><p>method属性：表单中数据的提交方式。</p>
+</li>
+</ul>
+<p>接下来，再src文件夹下创建LoginServlet类，其中的doPost()方法参考代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		request.setCharacterEncoding(<span class="string">"utf-8"</span>);<span class="comment">//设置request编码</span></span><br><span class="line">		response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);<span class="comment">//设置response编码</span></span><br><span class="line">		String id = request.getParameter(<span class="string">"username"</span>);<span class="comment">//获取表单用户名</span></span><br><span class="line">		String pwd = request.getParameter(<span class="string">"password"</span>);<span class="comment">//获取表单密码</span></span><br><span class="line">		<span class="keyword">if</span>(pwd==<span class="keyword">null</span> || pwd.equals(<span class="string">""</span>))&#123;<span class="comment">//若没有密码，或为空</span></span><br><span class="line">			response.getWriter().print(<span class="string">"密码不能为空！"</span>);<span class="comment">//在当前页面(login.jsp)添加显示一句话。</span></span><br><span class="line">			<span class="keyword">return</span>;<span class="comment">//跳出doPost()方法，等待login.jsp页面再次提交表单。</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(id==<span class="keyword">null</span> || id.equals(<span class="string">""</span>))&#123;<span class="comment">//若没有账号，或为空</span></span><br><span class="line">			response.getWriter().print(<span class="string">"用户名不能为空！"</span>);<span class="comment">//在当前页面(login.jsp)添加显示一句话。</span></span><br><span class="line">			<span class="keyword">return</span>;<span class="comment">//跳出doPost()方法，等待login.jsp页面再次提交表单。</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(id.equals(<span class="string">"sam"</span>) &amp;&amp; pwd.equals(<span class="string">"123"</span>)) &#123;<span class="comment">//用户名、密码正确</span></span><br><span class="line">			request.getRequestDispatcher(<span class="string">"welcome.jsp"</span>).forward(request, response);<span class="comment">//页面转发</span></span><br><span class="line">			<span class="comment">//页面跳转的方式：(1)转发：foward(地址栏地址不变);(2)重定向：redirect(地址栏地址变化)</span></span><br><span class="line">		&#125;<span class="keyword">else</span><span class="comment">//用户名、密码错误</span></span><br><span class="line">		&#123;</span><br><span class="line">			response.getWriter().print(<span class="string">"用户名或密码有误，请重新输入！"</span>);<span class="comment">//在当前页面(login.jsp)添加显示一句话。</span></span><br><span class="line">			<span class="keyword">return</span>;<span class="comment">//跳出doPost()方法，等待login.jsp页面再次提交表单。</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第三步：LoginServlet在项目配置文件web-xml中注册："><a href="#第三步：LoginServlet在项目配置文件web-xml中注册：" class="headerlink" title="第三步：LoginServlet在项目配置文件web.xml中注册："></a>第三步：LoginServlet在项目配置文件web.xml中注册：</h3><pre><code>  &lt;servlet&gt;&lt;/servlet&gt;
+  &lt;servlet-name&gt;&lt;/servlet-name&gt;
+  &lt;servlet-class&gt;&lt;/servlet-class&gt;
+  &lt;servlet-mapping&gt;&lt;/servlet-mapping&gt;
+  &lt;url-pattern&gt;&lt;/url-pattern&gt;
+这五个都是注册一个servlet组件必须的节点</code></pre><p>1，<servlet>是用来注册Servlet的存放地址<br>           <servlet-name> 这个是我们要注册servlet的名字<br>           <servlet-class> 这个就是指向我们要注册的servlet 的类地址, 要带包路径<br>            以上两个在一个servlet 节点之下.</servlet-class></servlet-name></servlet></p>
+<p>2，<servlet-mapping> 是用来配置我们注册的组件的访问路径,<br>           <servlet-name> 这个要与前面写的servlet的名字一致</servlet-name></servlet-mapping></p>
+<pre><code>&lt;url-pattern&gt; 配置这个组件的访问路径
+
+ 以上两个在一个servlet-mapping 节点之下.</code></pre><p>接续第一步、第二步内容为例：<br><servlet><br><servlet-name>LoginServlet</servlet-name><br><servlet-class>sam.his.servlet.LoginServlet</servlet-class>  <!--存放路径 --><br></servlet><br><servlet-mapping><br><servlet-name>LoginServlet</servlet-name>                       <!-- 与上面的 <servlet-name> 要一致 --><br><url-pattern>/LoginServlet</url-pattern>  <!-- 访问路径 --><br></servlet-mapping></p>
+<h3 id="第四步：实施登录"><a href="#第四步：实施登录" class="headerlink" title="第四步：实施登录"></a>第四步：实施登录</h3><p>注意：需要再添加一个登录成功页面welcome.jsp(参考第二步的doPost方法中代码)</p>
+<p>项目部署在tomcat服务器上，运行后在地址栏输入地址访问项目的login.jsp页面，表单中录入用户名、密码，尝试登录。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/18/课堂笔记0918/" class="archive-article-date">
-  	<time datetime="2019-09-18T10:36:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/18/课堂笔记0918/">课堂笔记0918</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/21/1022/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/17/课堂笔记0917/" class="archive-article-date">
-  	<time datetime="2019-09-17T10:35:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-17</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/21/课堂笔记1021/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/17/课堂笔记0917/">课堂笔记0917</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/16/课堂笔记0916/" class="archive-article-date">
-  	<time datetime="2019-09-16T10:35:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/16/课堂笔记0916/">课堂笔记0916</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/16/课堂笔记0916am/" class="archive-article-date">
-  	<time datetime="2019-09-16T03:39:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/16/课堂笔记0916am/">课堂笔记0916am</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/12/课堂笔记0912/" class="archive-article-date">
-  	<time datetime="2019-09-12T10:34:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/12/课堂笔记0912/">课堂笔记0912</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/11/课堂笔记0911/" class="archive-article-date">
-  	<time datetime="2019-09-11T10:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/11/课堂笔记0911/">课堂笔记0911</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/10/课堂笔记0910/" class="archive-article-date">
-  	<time datetime="2019-09-10T10:33:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/10/课堂笔记0910/">课堂笔记0910</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/06/课堂笔记0906/" class="archive-article-date">
-  	<time datetime="2019-09-06T10:31:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/06/课堂笔记0906/">课堂笔记0906</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/05/课堂笔记0905/" class="archive-article-date">
-  	<time datetime="2019-09-05T00:30:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/05/课堂笔记0905/">课堂笔记0905</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/04/课堂笔记0904am/" class="archive-article-date">
-  	<time datetime="2019-09-04T01:30:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/04/课堂笔记0904am/">课堂笔记0904am</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +339,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
